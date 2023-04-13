@@ -1,6 +1,7 @@
 package ru.dinerik.Admin.panel.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Order {
+public class Order extends AbstractEntity {
 
-    private Long id;
     private String subject;                         // Предмет поручения
     private LocalDateTime timeExecution;            // Срок исполнения
     private String text;                            // Текст поручения

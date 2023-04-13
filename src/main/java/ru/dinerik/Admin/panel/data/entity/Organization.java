@@ -12,9 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Organization {
+public class Organization extends AbstractEntity {
 
-    private Long id;
     private String fullName;            // Наименование организации
     private String postalAddress;       // Физический адрес
     private String legalAddress;        // Юридический адрес

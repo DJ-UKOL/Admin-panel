@@ -12,8 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Division {
-    private Long id;
+public class Division extends AbstractEntity {
     private String fullName;            // Наименование подразделения
     private String contactDetails;      // Контактные данные
 }

@@ -12,9 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Employee {
+public class Employee extends AbstractEntity {
 
-    private Long id;
     private String lastname;        // Фамилия
     private String firstname;       // Имя
     private String patronymic;      // Отчество
