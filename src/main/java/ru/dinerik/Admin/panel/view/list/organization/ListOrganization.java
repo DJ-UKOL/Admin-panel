@@ -14,8 +14,6 @@ import ru.dinerik.Admin.panel.repository.RestClientService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 
-import java.util.List;
-
 // Список организаций
 @SpringComponent
 @PermitAll
@@ -42,6 +40,7 @@ public class ListOrganization extends AbstractList<Organization> {
         grid.addColumn(Organization::getFullName).setHeader("Наименование организации");
         grid.addColumn(Organization::getLegalAddress).setHeader("Юридический адрес");
         grid.addColumn(Organization::getPostalAddress).setHeader("Физический адрес");
+        grid.getColumns().forEach(e->e.setSortable(true));
     }
 
     @Override

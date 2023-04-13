@@ -14,7 +14,6 @@ import ru.dinerik.Admin.panel.repository.RestClientService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 
-import java.util.List;
 
 // Список подразделений
 @SpringComponent
@@ -41,6 +40,7 @@ public class ListDivision extends AbstractList<Division> {
         initGrid();
         grid.addColumn(Division::getFullName).setHeader("Наименование");
         grid.addColumn(Division::getContactDetails).setHeader("Контактные данные");
+        grid.getColumns().forEach(e->e.setSortable(true));
     }
 
     @Override

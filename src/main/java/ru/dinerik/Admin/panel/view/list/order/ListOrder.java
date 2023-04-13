@@ -14,7 +14,6 @@ import ru.dinerik.Admin.panel.repository.RestClientService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 
-import java.util.List;
 
 // Список поручений
 @SpringComponent
@@ -43,6 +42,7 @@ public class ListOrder extends AbstractList<Order> {
         grid.addColumn(Order::getSubject).setHeader("Предмет поручения");
         grid.addColumn(Order::getTimeExecution).setHeader("Срок исполнения");
         grid.addColumn(Order::getText).setHeader("Текст поручения");
+        grid.getColumns().forEach(e->e.setSortable(true));
     }
 
     @Override

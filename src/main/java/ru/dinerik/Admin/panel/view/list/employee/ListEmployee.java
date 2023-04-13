@@ -14,7 +14,6 @@ import ru.dinerik.Admin.panel.repository.RestClientService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 
-import java.util.List;
 
 // Список пользователей
 @SpringComponent
@@ -43,6 +42,7 @@ public class ListEmployee extends AbstractList<Employee> {
         grid.addColumn(Employee::getFirstname).setHeader("Имя");
         grid.addColumn(Employee::getPatronymic).setHeader("Отчество");
         grid.addColumn(Employee::getJobTitle).setHeader("Должность");
+        grid.getColumns().forEach(e->e.setSortable(true));
     }
 
     @Override
