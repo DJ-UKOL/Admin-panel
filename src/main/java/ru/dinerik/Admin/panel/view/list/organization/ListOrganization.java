@@ -10,7 +10,7 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.context.annotation.Scope;
 import ru.dinerik.Admin.panel.data.entity.Organization;
-import ru.dinerik.Admin.panel.repository.RestClientService;
+import ru.dinerik.Admin.panel.service.AbstractService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 
@@ -22,7 +22,7 @@ import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 @PageTitle("Organization | Admin Panel ECM")
 public class ListOrganization extends AbstractList<Organization> {
 
-    public ListOrganization(RestClientService<Organization> service) {
+    public ListOrganization(AbstractService<Organization> service) {
         super(new Grid<>(Organization.class, false), new OrganizationForm());
         this.service = service;
         addClassName("list-view");

@@ -6,6 +6,6 @@ import ru.dinerik.Admin.panel.data.entity.Division;
 
 @Service
 @FeignClient(name = "jsonDivision", url = "${feign.client.url}", path = "/division")
-public interface RestClientDivisionService extends RestClientService<Division> {
+public interface RestClientDivisionRepository extends RestClientRepository<Division> {
 
 }

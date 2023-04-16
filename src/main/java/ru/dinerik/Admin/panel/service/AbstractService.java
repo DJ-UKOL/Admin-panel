@@ -1,16 +1,45 @@
 package ru.dinerik.Admin.panel.service;
 
+import org.springframework.stereotype.Service;
 import ru.dinerik.Admin.panel.data.entity.AbstractEntity;
+import ru.dinerik.Admin.panel.repository.RestClientRepository;
 
 import java.util.List;
 
-public interface AbstractService<T extends AbstractEntity> {
+@Service
+public class AbstractService<T extends AbstractEntity> {
 
-    List<T> get();
+    protected RestClientRepository<T> repository;
 
-    void delete(Long id);
+    public List<T> findAll(String stringFilter) {
+        if (stringFilter == null || stringFilter.isEmpty()) {
+            return repository.get();
+        } else {
+            return repository.searchOnText(stringFilter);
+        }
+    }
 
-    void create(T entity);
+    public void delete(Long id) {
+        repository.delete(id);
+    }
 
-    void update(Long id, T entity);
+    public void save(AbstractEntity entity) {
+        if (entity == null) {
+            System.err.println("Null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        repository.create(entity);
+    }
+
+    public void update(Long id, AbstractEntity entity) {
+        if (entity == null) {
+            System.err.println("Null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        repository.update(id, entity);
+    }
+
+    public List<T> findAll() {
+        return repository.get();
+    }
 }

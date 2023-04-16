@@ -6,6 +6,6 @@ import ru.dinerik.Admin.panel.data.entity.Employee;
 
 @Service
 @FeignClient(name = "jsonEmployee", url = "${feign.client.url}", path = "/employee")
-public interface RestClientEmployeeService extends RestClientService<Employee> {
+public interface RestClientEmployeeRepository extends RestClientRepository<Employee> {
 
 }

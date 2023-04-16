@@ -6,6 +6,6 @@ import ru.dinerik.Admin.panel.data.entity.Order;
 
 @Service
 @FeignClient(name = "jsonOrder", url = "${feign.client.url}", path = "/order")
-public interface RestClientOrderService extends RestClientService<Order> {
+public interface RestClientOrderRepository extends RestClientRepository<Order> {
 
 }

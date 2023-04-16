@@ -6,6 +6,6 @@ import ru.dinerik.Admin.panel.data.entity.Organization;
 
 @Service
 @FeignClient(name = "jsonOrganization", url = "${feign.client.url}", path = "/organization")
-public interface RestClientOrganizationService extends RestClientService<Organization> {
+public interface RestClientOrganizationRepository extends RestClientRepository<Organization> {
 
 }

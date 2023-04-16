@@ -10,10 +10,9 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.context.annotation.Scope;
 import ru.dinerik.Admin.panel.data.entity.Employee;
-import ru.dinerik.Admin.panel.repository.RestClientService;
+import ru.dinerik.Admin.panel.service.AbstractService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
-
 
 // Список пользователей
 @SpringComponent
@@ -23,7 +22,7 @@ import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 @PageTitle("Employee | Admin Panel ECM")
 public class ListEmployee extends AbstractList<Employee> {
 
-    public ListEmployee(RestClientService<Employee> service) {
+    public ListEmployee(AbstractService<Employee> service) {
         super(new Grid<>(Employee.class, false), new EmployeeForm());
         this.service = service;
         addClassName("list-view");

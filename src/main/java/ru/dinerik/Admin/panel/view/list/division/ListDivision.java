@@ -10,10 +10,9 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.context.annotation.Scope;
 import ru.dinerik.Admin.panel.data.entity.Division;
-import ru.dinerik.Admin.panel.repository.RestClientService;
+import ru.dinerik.Admin.panel.service.AbstractService;
 import ru.dinerik.Admin.panel.view.MainView;
 import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
-
 
 // Список подразделений
 @SpringComponent
@@ -23,7 +22,7 @@ import ru.dinerik.Admin.panel.view.list.abstraction.AbstractList;
 @PageTitle("Division | Admin Panel ECM")
 public class ListDivision extends AbstractList<Division> {
 
-    public ListDivision(RestClientService<Division> service) {
+    public ListDivision(AbstractService<Division> service) {
         super(new Grid<>(Division.class, false), new DivisionForm());
         this.service = service;
         addClassName("list-view");

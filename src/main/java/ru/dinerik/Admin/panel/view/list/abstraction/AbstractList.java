@@ -6,8 +6,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import ru.dinerik.Admin.panel.data.entity.AbstractEntity;
-import ru.dinerik.Admin.panel.data.entity.Division;
-import ru.dinerik.Admin.panel.repository.RestClientService;
+import ru.dinerik.Admin.panel.service.AbstractService;
 
 import java.util.List;
 
@@ -15,8 +14,7 @@ public abstract class AbstractList<T extends AbstractEntity> extends VerticalLay
     protected TextField filterText = new TextField();
     protected Grid<T> grid;
     protected AbstractForm<T> form;
-    protected RestClientService<T> service;
-
+    protected AbstractService<T> service;
     protected abstract void configureGrid();
     protected abstract HorizontalLayout getToolbar();
 
@@ -35,7 +33,7 @@ public abstract class AbstractList<T extends AbstractEntity> extends VerticalLay
     }
 
     protected void updateList() {
-        grid.setItems(service.get());
+        grid.setItems(service.findAll(filterText.getValue()));
     }
 
     protected void closeEditor() {
@@ -52,7 +50,7 @@ public abstract class AbstractList<T extends AbstractEntity> extends VerticalLay
 
     protected void saveEntity(AbstractForm.SaveEvent event) {
         if(event.getEntity().getId() == null) {
-            service.create(event.getEntity());
+            service.save(event.getEntity());
         }
         else {
             service.update(event.getEntity().getId(), event.getEntity());
@@ -85,7 +83,7 @@ public abstract class AbstractList<T extends AbstractEntity> extends VerticalLay
 
     protected void initGrid() {
         grid.addClassNames("abstract-grid");
-        List<T> list = service.get();
+        List<T> list = service.findAll();
         grid.setItems(list);
         grid.setSizeFull();
 
